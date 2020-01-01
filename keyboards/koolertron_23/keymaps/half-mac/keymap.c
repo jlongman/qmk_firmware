@@ -30,8 +30,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LEFT] = LAYOUT( \
   KC_TAB,      KC_Q,     KC_W,    KC_E,    KC_R,    KC_T, \
   KC_KP_ENTER, KC_A,     KC_S,    KC_D,    KC_F,    KC_G, \
-  OSM(MOD_LSFT),   KC_Z,     KC_X,    KC_C,    KC_V,    KC_B, \
-  TO(_NUM),     MO(_BL),  MO(_BL), MO(KC_APPLICATION),  LT(_RIGHT, KC_SPACE) ,LT(_RIGHT, KC_SPACE) \
+  OSM(MOD_LSFT),KC_Z,     KC_X,    KC_C,    KC_V,    KC_B, \
+  TO(_NUM),     KC_LCTRL, KC_LALT, LGUI_T(KC_SPACE),  LT(_RIGHT, KC_SPACE) ,LT(_RIGHT, KC_SPACE) \
 ),
 /* Qwerty
  * ,-----------------------------------------.
@@ -45,10 +45,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------'
  */
 [_RIGHT] = LAYOUT( \
-  KC_BSPACE,      KC_P,     KC_O,    KC_I,    KC_U,    KC_Y, \
+  KC_BSPACE, KC_P,     KC_O,    KC_I,    KC_U,    KC_Y, \
   KC_QUOTE, KC_SCOLON,     KC_L,    KC_K,    KC_J,    KC_H, \
-  KC_RSHIFT,   KC_SLASH,     KC_DOT,    KC_COMMA,    KC_M,    KC_N, \
-  TO(_NUM),     MO(_BL),  MO(_BL), MO(_BL),  MO(_BL) , KC_NO\
+  KC_RSHIFT, KC_SLASH,     KC_DOT,    KC_COMMA,    KC_M,    KC_N, \
+  TO(_NUM),  _______,  _______, MO(_BL),  _______ , _______\
 ),
 /* Numbers
  * ,-----------------------------------------.
@@ -62,10 +62,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------'
  */
 [_NUM] = LAYOUT( \
-  KC_TAB,      KC_KP_MINUS, KC_KP_9, KC_KP_8, KC_KP_7, KC_KP_ASTERISK, \
-  KC_KP_ENTER, KC_KP_PLUS,  KC_KP_6, KC_KP_5, KC_KP_4, KC_KP_DOT, \
-  KC_RSHIFT,   KC_KP_SLASH, KC_KP_3, KC_KP_2, KC_KP_1, KC_KP_0, \
-  TO(_ARROWS),     MO(_BL),  MO(_BL), MO(_BL),  LT(_RIGHT, KC_SPACE) ,LT(_RIGHT, KC_SPACE) \
+  _______, KC_KP_MINUS, KC_KP_9, KC_KP_8, KC_KP_7, KC_KP_ASTERISK, \
+  _______, KC_KP_PLUS,  KC_KP_6, KC_KP_5, KC_KP_4, KC_KP_DOT, \
+  _______, KC_KP_SLASH, KC_KP_3, KC_KP_2, KC_KP_1, KC_KP_0, \
+  TO(_ARROWS),     MO(_BL),  MO(_BL), _______,  LT(_RIGHT, KC_SPACE) ,LT(_RIGHT, KC_SPACE) \
 ),
 /* Arrows
  * ,-----------------------------------------.
