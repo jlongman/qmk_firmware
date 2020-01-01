@@ -79,8 +79,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------'
  */
 [_ARROWS] = LAYOUT( \
-  KC_TAB,      _______,  _______, KC_UP,    _______, _______, \
-  KC_KP_ENTER, _______,  KC_LEFT, KC_DOWN, KC_RIGHT, _______, \
+  KC_TAB,      _______,  KC_UP, _______,   _______, _______, \
+  KC_KP_ENTER,  KC_LEFT, KC_DOWN, KC_RIGHT,_______, _______, \
   KC_RSHIFT,   _______,  _______, _______, _______,  _______, \
   TO(_FUNCTION),     MO(_BL),  MO(_BL), MO(_BL),  LT(_RIGHT, KC_SPACE) ,LT(_RIGHT, KC_SPACE) \
 ),
