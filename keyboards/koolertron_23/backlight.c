@@ -24,7 +24,7 @@
 // Port D: digital pins of the AVR chipset
 #define NUMLOCK_PORT    (1 << 0)  // D0
 #define CAPSLOCK_PORT   (1 << 1)  // D1
-#define BACKLIGHT_PORT  (1 << 4)  // D4
+#define BACKLIGHT_PORT  (1 << 1)  // D4
 #define SCROLLLOCK_PORT (1 << 6)  // D6
 
 // 0 = w
@@ -52,8 +52,9 @@ extern backlight_config_t backlight_config;
 
 // @Override
 // turn LEDs on and off depending on USB caps/num/scroll lock states.
+/*
 __attribute__ ((weak))
-void led_set_user(uint8_t usb_led) {
+bool led_update_user(led_t usb_led) {
     if (usb_led & (1 << USB_LED_NUM_LOCK)) {
       // turn on
       DDRD  |= NUMLOCK_PORT;
@@ -79,8 +80,9 @@ void led_set_user(uint8_t usb_led) {
       DDRD  &= ~SCROLLLOCK_PORT;
       PORTD &= ~SCROLLLOCK_PORT;
     }
+return false;
 }
-
+*/
 #ifdef BACKLIGHT_ENABLE
 
 // sets up Timer 1 for 8-bit PWM

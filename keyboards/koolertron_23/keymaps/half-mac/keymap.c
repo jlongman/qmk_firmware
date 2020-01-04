@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-
 #define _LEFT 0
 #define _RIGHT 1
 #define _NUM 2
@@ -119,6 +118,72 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   BL_DEC,  BL_DEC,  BL_INC,  MO(_BL),  _______ , _______ \
 )
 };
+
+#define NUMLOCK_PORT    (1 << 0)  // D0
+#define CAPSLOCK_PORT   (1 << 1)  // D1
+#define BACKLIGHT_PORT  (1 << 1)  // D4
+#define SCROLLLOCK_PORT (1 << 6)  // D6
+
+void numlock(bool on){
+    if (on) {
+      // turn on
+      DDRD  |= NUMLOCK_PORT;
+      PORTD |= NUMLOCK_PORT;
+    } else {
+      // turn off
+      DDRD  &= ~NUMLOCK_PORT;
+      PORTD &= ~NUMLOCK_PORT;
+    }
+}
+void capslock(bool on){
+    if (on) {
+      DDRD  |= CAPSLOCK_PORT;
+      PORTD |= CAPSLOCK_PORT;
+    } else {
+      DDRD  &= ~CAPSLOCK_PORT;
+      PORTD &= ~CAPSLOCK_PORT;
+    }
+}
+void scrolllock(bool on){
+    if (on) {
+      DDRD  |= SCROLLLOCK_PORT;
+      PORTD |= SCROLLLOCK_PORT;
+    } else {
+      DDRD  &= ~SCROLLLOCK_PORT;
+      PORTD &= ~SCROLLLOCK_PORT;
+    }
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+    case _ARROWS:
+	numlock(true);
+        capslock(false);
+        break;
+    case _RIGHT:
+	numlock(true);
+        capslock(false);
+        break;
+    case _NUM:
+	numlock(true);
+        capslock(true);
+        break;
+    case _FUNCTION:
+	numlock(false);
+        capslock(true);
+        break;
+    default: //  for any other layers, or the default layer
+      DDRD  &= ~NUMLOCK_PORT;
+      PORTD &= ~NUMLOCK_PORT;
+      DDRD  &= ~CAPSLOCK_PORT;
+      PORTD &= ~CAPSLOCK_PORT;
+      DDRD  &= ~SCROLLLOCK_PORT;
+      PORTD &= ~SCROLLLOCK_PORT;
+        break;
+    }
+  return state;
+}
+
 #ifdef SWAP_HANDS_ENABLE
 const keypos_t hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
   { {3, 0}, {2, 0}, {1, 0}, {0, 0} },
